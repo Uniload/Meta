@@ -1,4 +1,4 @@
-class PackReplication extends Engine.Actor config(meta_v1);
+class PackReplication extends Engine.Actor config(meta);
 
 // repair
 var config float repair_rechargeTimeSeconds;

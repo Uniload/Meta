@@ -1,4 +1,4 @@
-class WeaponReplication extends Engine.Actor config(meta_v1);
+class WeaponReplication extends Engine.Actor config(meta);
 
 var config float HandGrenade_roundsPerSecond;
 

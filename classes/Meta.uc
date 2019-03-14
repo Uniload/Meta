@@ -1,4 +1,4 @@
-class Meta extends Gameplay.Mutator config(meta_v1);
+class Meta extends Gameplay.Mutator config(meta);
 
 
 var(Meta) config bool allowCommands;
