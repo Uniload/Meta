@@ -11,16 +11,9 @@ var(Meta) Array<Armor.QuantityWeapon>   LightWeapons,
 var(Meta) private PackReplication prInstance;
 var(Meta) private WeaponReplication wrInstance;
 
-replication
-{
-    reliable if (bNetInitial)
-        prInstance
-        ;
-}
-
 static function Name getLogName()
 {
-    return Name("meta_v1");
+    return Name("meta_v2");
 }
 
 /* @Override */
