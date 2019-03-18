@@ -25,6 +25,15 @@ simulated event PreBeginPlay()
 
     prInstance = spawn(class'PackReplication');
     wrInstance = spawn(class'WeaponReplication');
+
+    changeProperties();
+
+    log("Startup completed", class'Meta'.static.getLogName());
+}
+
+simulated function changeProperties()
+{
+    class'DeployableClasses.DeployedInventoryStation'.default.accessClass = class'InventoryStationAccess';
 }
 
 /* @Override */
