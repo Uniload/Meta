@@ -70,16 +70,13 @@ simulated event PostBeginPlay()
 {
     if (Level.NetMode != NM_Client) {
         SaveConfig();
+        changePackProperties();
     }
 }
 
-/**
- * Corrupts game cache prohibiting the user to join another server
- */
-simulated event PostNetReceive()
-{
-    super.PostNetReceive();
 
+simulated function changePackProperties()
+{
     class'EquipmentClasses.PackRepair'.default.rechargeTimeSeconds = repair_rechargeTimeSeconds;
     class'EquipmentClasses.PackRepair'.default.rampUpTimeSeconds = repair_rampUpTimeSeconds;
     class'EquipmentClasses.PackRepair'.default.deactivatingDuration = repair_deactivatingDuration;
@@ -110,7 +107,15 @@ simulated event PostNetReceive()
     class'EquipmentClasses.PackSpeed'.default.passiveRefireRateScale = speed_passiveRefireRateScale;
     class'EquipmentClasses.PackSpeed'.default.passiveMaterial = speed_passiveMaterial;
     class'EquipmentClasses.PackSpeed'.default.activeMaterial = speed_activeMaterial;
+}
 
+/**
+ * Corrupts game cache prohibiting the user to join another server
+ */
+simulated event PostNetReceive()
+{
+    super.PostNetReceive();
+    changePackProperties();
     log("pack properties replication completed", class'Meta'.static.getLogName());
 }
 

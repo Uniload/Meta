@@ -140,25 +140,25 @@ defaultproperties
 {
     HandGrenade_roundsPerSecond =   0.500000
 
-    LightSpinfusorAmmo          =   15
-    LightSniperAmmo             =   7
-    LightGrenadeLauncherAmmo    =   10
+    LightSpinfusorAmmo          =   20
+    LightSniperAmmo             =   10
+    LightGrenadeLauncherAmmo    =   15
     LightRocketPodAmmo          =   54
-    LightGrapplerAmmo           =   7
-    LightChaingunAmmo           =   100
-    MediumSpinfusorAmmo         =   20
-    MediumGrenadeLauncherAmmo   =   15
+    LightGrapplerAmmo           =   10
+    LightChaingunAmmo           =   150
+    MediumSpinfusorAmmo         =   22
+    MediumGrenadeLauncherAmmo   =   20
     MediumRocketPodAmmo         =   84
-    MediumGrapplerAmmo          =   5
-    MediumChaingunAmmo          =   150
+    MediumGrapplerAmmo          =   7
+    MediumChaingunAmmo          =   200
     HeavySpinfusorAmmo          =   25
     HeavyMortarAmmo             =   13
     HeavyGrenadeLauncherAmmo    =   20
     HeavyRocketPodAmmo          =   96
-    HeavyGrapplerAmmo           =   7
-    HeavyChaingunAmmo           =   200
+    HeavyGrapplerAmmo           =   15
+    HeavyChaingunAmmo           =   300
 
-    snipe_damageAmt                     =       35
+    snipe_damageAmt                     =       50
     snipe_ammoCount                     =       10
     snipe_ammoUsage                     =       1
     snipe_roundsPerSecond               =       0.500000
@@ -183,7 +183,7 @@ defaultproperties
     cg_heatPeriod                  =       7.000000
     cg_coolDownThreshold           =       1.000000
     cg_speedCooldownFactor         =       0.002000
-    cg_damageAmt                   =       6.000000
+    cg_damageAmt                   =       5.000000
     cg_AccelerationMagtitude       =       0.000000
     cg_bDeflectable                =       False
     cg_MaxVelocity                 =       0.000000

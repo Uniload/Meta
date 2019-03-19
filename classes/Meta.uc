@@ -3,6 +3,7 @@ class Meta extends Gameplay.Mutator config(meta);
 
 var(Meta) config bool allowCommands;
 var(Meta) private bool trocIsOn;
+var(Meta) config bool enableLeagueMode;
 
 var(Meta) Array<Armor.QuantityWeapon>   LightWeapons,
                                         MediumWeapons,
@@ -13,7 +14,7 @@ var(Meta) private WeaponReplication wrInstance;
 
 static function Name getLogName()
 {
-    return Name("meta_v2");
+    return Name("meta_v1b2");
 }
 
 /* @Override */
@@ -33,6 +34,7 @@ simulated event PreBeginPlay()
 
 simulated function changeProperties()
 {
+    // Disable player's holding the flag from using a deployedInventoryStation
     class'DeployableClasses.DeployedInventoryStation'.default.accessClass = class'InventoryStationAccess';
 }
 
@@ -153,6 +155,7 @@ defaultproperties
 {
     allowCommands=true
     trocIsOn=false
+    enableLeagueMode=false
 
     LightWeapons(0)=(typeClass=Class'EquipmentClasses.WeaponSpinfusor',quantity=20)
     LightWeapons(1)=(typeClass=Class'EquipmentClasses.WeaponSniperRifle',quantity=10)
