@@ -140,23 +140,23 @@ defaultproperties
 {
     HandGrenade_roundsPerSecond =   0.500000
 
-    LightSpinfusorAmmo          =   20
-    LightSniperAmmo             =   10
-    LightGrenadeLauncherAmmo    =   15
+    LightSpinfusorAmmo          =   15
+    LightSniperAmmo             =   7
+    LightGrenadeLauncherAmmo    =   10
     LightRocketPodAmmo          =   54
-    LightGrapplerAmmo           =   10
-    LightChaingunAmmo           =   150
-    MediumSpinfusorAmmo         =   22
-    MediumGrenadeLauncherAmmo   =   20
+    LightGrapplerAmmo           =   7
+    LightChaingunAmmo           =   100
+    MediumSpinfusorAmmo         =   15
+    MediumGrenadeLauncherAmmo   =   10
     MediumRocketPodAmmo         =   84
     MediumGrapplerAmmo          =   7
-    MediumChaingunAmmo          =   200
-    HeavySpinfusorAmmo          =   25
+    MediumChaingunAmmo          =   150
+    HeavySpinfusorAmmo          =   20
     HeavyMortarAmmo             =   13
-    HeavyGrenadeLauncherAmmo    =   20
+    HeavyGrenadeLauncherAmmo    =   15
     HeavyRocketPodAmmo          =   96
     HeavyGrapplerAmmo           =   15
-    HeavyChaingunAmmo           =   300
+    HeavyChaingunAmmo           =   200
 
     snipe_damageAmt                     =       50
     snipe_ammoCount                     =       10

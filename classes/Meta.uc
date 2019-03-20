@@ -107,15 +107,22 @@ simulated event Mutate(string command, PlayerController sender)
     Super.Mutate(command, sender);
     if (!allowCommands || !sender.AdminManager.bAdmin) return;
 
-    else if (command ~= "troc") {
-        if (trocIsOn)
-        {
-            trocIsOn = false;
-            Level.Game.BroadcastLocalized(self, class'metaGameMessages', 101);
-        } else {
-            trocIsOn = true;
-            Level.Game.BroadcastLocalized(self, class'metaGameMessages', 100);
-        }
+
+    switch (command) {
+        case "troc":
+            if (trocIsOn)
+                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 101);
+            else
+                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 100);
+            trocIsOn = !trocIsOn;
+            break;
+        case "league":
+            if (enableLeagueMode)
+                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 103);
+            else
+                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 102);
+            enableLeagueMode = !enableLeagueMode;
+            break;
     }
 }
 
@@ -128,25 +135,28 @@ event string MutateSpawnCombatRoleClass(Character c)
     c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons = MediumWeapons;
     c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons = HeavyWeapons;
 
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.LightSpinfusorAmmo;
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[1].quantity=wrInstance.LightSniperAmmo;
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.LightGrenadeLauncherAmmo;
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.LightRocketPodAmmo;
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.LightGrapplerAmmo;
-    c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.LightChaingunAmmo;
+    if(enableLeagueMode)
+    {
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.LightSpinfusorAmmo;
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[1].quantity=wrInstance.LightSniperAmmo;
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.LightGrenadeLauncherAmmo;
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.LightRocketPodAmmo;
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.LightGrapplerAmmo;
+        c.team().combatRoleData[0].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.LightChaingunAmmo;
 
-    c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.MediumSpinfusorAmmo;
-    c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.MediumGrenadeLauncherAmmo;
-    c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.MediumRocketPodAmmo;
-    c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.MediumGrapplerAmmo;
-    c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.MediumChaingunAmmo;
+        c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.MediumSpinfusorAmmo;
+        c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.MediumGrenadeLauncherAmmo;
+        c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.MediumRocketPodAmmo;
+        c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.MediumGrapplerAmmo;
+        c.team().combatRoleData[1].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.MediumChaingunAmmo;
 
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.HeavySpinfusorAmmo;
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[1].quantity=wrInstance.HeavyMortarAmmo;
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.HeavyGrenadeLauncherAmmo;
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.HeavyRocketPodAmmo;
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.HeavyGrapplerAmmo;
-    c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.HeavyChaingunAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[0].quantity=wrInstance.HeavySpinfusorAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[1].quantity=wrInstance.HeavyMortarAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[2].quantity=wrInstance.HeavyGrenadeLauncherAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[3].quantity=wrInstance.HeavyRocketPodAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[5].quantity=wrInstance.HeavyGrapplerAmmo;
+        c.team().combatRoleData[2].role.default.armorClass.default.AllowedWeapons[7].quantity=wrInstance.HeavyChaingunAmmo;
+    }
 
     return "";
 }
@@ -162,7 +172,7 @@ defaultproperties
     LightWeapons(2)=(typeClass=Class'EquipmentClasses.WeaponGrenadeLauncher',quantity=15)
     LightWeapons(3)=(typeClass=Class'EquipmentClasses.WeaponRocketPod',quantity=42)
     LightWeapons(4)=(typeClass=Class'EquipmentClasses.WeaponBlaster')
-    LightWeapons(5)=(typeClass=Class'EquipmentClasses.WeaponGrappler',quantity=7)
+    LightWeapons(5)=(typeClass=Class'EquipmentClasses.WeaponGrappler',quantity=10)
     LightWeapons(6)=(typeClass=Class'EquipmentClasses.WeaponBurner')
     LightWeapons(7)=(typeClass=Class'EquipmentClasses.WeaponChaingun',quantity=150)
 
@@ -180,7 +190,7 @@ defaultproperties
     HeavyWeapons(2)=(typeClass=Class'EquipmentClasses.WeaponGrenadeLauncher',quantity=20)
     HeavyWeapons(3)=(typeClass=Class'EquipmentClasses.WeaponRocketPod',quantity=96)
     HeavyWeapons(4)=(typeClass=Class'EquipmentClasses.WeaponBlaster')
-    HeavyWeapons(5)=(typeClass=Class'EquipmentClasses.WeaponGrappler',quantity=7)
+    HeavyWeapons(5)=(typeClass=Class'EquipmentClasses.WeaponGrappler',quantity=15)
     HeavyWeapons(6)=(typeClass=Class'EquipmentClasses.WeaponBurner')
     HeavyWeapons(7)=(typeClass=Class'EquipmentClasses.WeaponChaingun',quantity=300)
 

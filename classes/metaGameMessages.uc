@@ -2,6 +2,8 @@ class metaGameMessages extends Gameplay.TribesGameMessage;
 
 var localized string trocOn;
 var localized string trocOff;
+var localized string leagueOn;
+var localized string leagueOff;
 
 static function string GetString(
         optional int Switch,
@@ -14,16 +16,19 @@ static function string GetString(
     switch (Switch) {
         case 100:
             return default.trocOn;
-            break;
         case 101:
             return default.trocOff;
-            break;
+        case 102:
+            return default.leagueOn;
+        case 103:
+            return default.leagueOff;
     }
-    return super.GetString(Switch, Related1, Related2, OptionalObject, OptionalString);
 }
 
 defaultproperties
 {
-    trocOn="Server: Troc has been enabled."
-    trocOff="Server: Troc has been disabled."
+    leagueOn    =   "Server: League mode enabled."
+    leagueOff   =   "Server: League mode disabled."
+    trocOn      =   "Server: Troc has been enabled."
+    trocOff     =   "Server: Troc has been disabled."
 }
