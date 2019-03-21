@@ -14,7 +14,7 @@ var(Meta) private WeaponReplication wrInstance;
 
 static function Name getLogName()
 {
-    return Name("meta_v1b2");
+    return Name("meta_v1b3");
 }
 
 /* @Override */
@@ -36,6 +36,8 @@ simulated function changeProperties()
 {
     // Disable player's holding the flag from using a deployedInventoryStation
     class'DeployableClasses.DeployedInventoryStation'.default.accessClass = class'InventoryStationAccess';
+    //promod compatibility hack
+    class'promod_v1rc7_b3.promodDeployedInventoryStation'.default.accessClass = class'InventoryStationAccess';
 }
 
 /* @Override */
@@ -118,11 +120,13 @@ simulated event Mutate(string command, PlayerController sender)
             break;
         case "league":
             if (enableLeagueMode)
-                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 103);
+                Level.Game.Broadcast(self, "Server: League mode has been disabled.");
             else
-                Level.Game.BroadcastLocalized(self, class'metaGameMessages', 102);
+                Level.Game.Broadcast(self, "Server: League mode has been enabled.");
             enableLeagueMode = !enableLeagueMode;
             break;
+        default:
+            Level.Game.Broadcast(self, command);
     }
 }
 
